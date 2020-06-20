@@ -1,0 +1,15 @@
+﻿@import '~bootstrap/dist/css/bootstrap.css';
+.normalPage {
+   padding:20px;   
+}
+.form-control.ng-invalid.ng-dirty.ng-touched
+{
+    border: 2px solid red !important;
+}
+/*.form-control.ng-pristine.ng-invalid.ng-touched {
+    border: 2px solid red !important;
+}*/
+
+/*.ng-invalid {
+    border: 2px solid red !important;
+}*/

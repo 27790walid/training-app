@@ -1,0 +1,74 @@
+﻿<div class="normalPage">
+    <form>
+        <input type="text" (keyup.enter)="addTopic(topic)" #topic class="form-control" />
+        <ul class="list-group">
+            <li *ngFor="let topic of  formArr.controls" (click)="removeTopic(topic)">
+                {{topic.value}}
+            </li>
+        </ul>
+
+        <br />
+        <ul>
+            <li *ngFor="let w of weatherForeCastData">
+                {{w.summary}}
+            </li>
+        </ul>
+    </form>
+
+
+    <!--{{weatherForeCastData}}-->
+
+
+    <form [formGroup]="form" (ngSubmit)="login()">
+
+        <div class="form-group">
+            <label for="username">username</label>
+            <input formControlName="username" id="username" type="text" class="form-control" (change)="logx(username)" />
+            <div *ngIf="username.pending">check for uniqueness ....</div>
+            <div class="alert alert-danger" *ngIf="username.touched && username.invalid">
+                <div *ngIf="username.errors.required">username is required</div>
+                <div *ngIf="username.errors.minlength">min length is 2</div>
+                <div *ngIf="username.errors.cannotContainSpace"> username can not contain space</div>
+                <div *ngIf="username.errors.shouldBeUnique"> username Should Be Unique</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">password</label>
+            <input formControlName="password" id="password" type="password" class="form-control" />
+        </div>
+        <div class="alert alert-danger" *ngIf="form.errors"> in valid login</div>
+        <button class="btn-primary">Sign</button>
+    </form>
+</div>
+
+
+
+<!--<form #f="ngForm" (ngSubmit)="submit(f)">
+    <div class="normalPage">
+        <div class="form-group">
+            <label for="firstName"> First Name</label>
+            <input required minlength="3" maxlength="10" pattern="waleed" [(ngModel)]="firstNamex" name="firstName" #firstName type="text" class="form-control" />
+            <div class="alert alert-danger" *ngIf="!firstName.valid && firstName.touched">
+                <div *ngIf="firstName.errors.required"> First name is required</div>
+                <div *ngIf="firstName.errors.minlength"> min length should be 3 chracters</div>
+                <div *ngIf="firstName.errors.pattern"> not match pattern</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="comment"> Comment</label>
+            <textarea ngModel name="comment" #comment="ngModel" class="form-control"></textarea>
+        </div>
+        <div class="custom-checkbox">
+            <label>
+                <input type="checkbox" ngModel name="isSubscribe" /> is Subsribe Mail
+            </label>
+        </div>
+        <div class="custom-radio">
+            <label>  <input ngModel type="radio" name="SIX" value="1" />Male </label>
+            <label>   <input ngModel type="radio" name="SIX" value="2" />Femal </label>
+        </div>
+        {{f.value |json}}
+        <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+    </div>
+</form>-->
